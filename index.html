@@ -272,14 +272,24 @@
        <img src="wl-monogram-ivory.png" alt="With Love Socials" height="36" class="nav-logo-dark-hidden" />
        <img src="wl-monogram-charcoal.png" alt="With Love Socials" height="36" class="nav-logo-light-hidden" />
        Then use JS to toggle visibility on scroll like the nav itself */
-    .NavIcon.svg {
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+    /* REPLACE: swap the .nav-logo-mark SVG for your actual logo:
+       <img src="wl-monogram-ivory.png" alt="With Love Socials" height="36" class="nav-logo-dark-hidden" />
+       <img src="wl-monogram-charcoal.png" alt="With Love Socials" height="36" class="nav-logo-light-hidden" />
+       Then use JS to toggle visibility on scroll like the nav itself */
+    .nav-logo-mark {
       width: 36px;
       height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .NavIcon.svg { width: 36px; height: 36px; transition: fill 0.35s ease; }
+    .nav-logo-mark svg { width: 36px; height: 36px; transition: fill 0.35s ease; }
     .logo-text {
       font-family: var(--font-serif);
       font-size: 0.95rem;
