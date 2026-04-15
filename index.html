@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>With Love Socials</title>
 
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
+
+/* ================= BASE ================= */
+:root{
   --ivory:#F6F4F1;
+  --taupe:#C7C1B8;
+  --mocha:#9C8F84;
   --charcoal:#2F2F2F;
   --sage:#ADBAB7;
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
@@ -23,22 +26,24 @@ body{
   color:var(--charcoal);
 }
 
-/* GLOBAL IMAGE FIX */
 img{
-  display:block;
-  width:auto;
+  width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
+  display:block;
 }
 
-/* CONTAINER */
 .container{
   max-width:1120px;
-  margin:0 auto;
+  margin:auto;
   padding:0 28px;
 }
 
-/* NAV */
+.section{
+  padding:90px 0;
+}
+
+/* ================= NAV ================= */
 #navbar{
   position:fixed;
   width:100%;
@@ -57,6 +62,7 @@ img{
 
 .nav-logo img{
   height:36px;
+  width:auto;
 }
 
 .nav-links{
@@ -67,8 +73,8 @@ img{
 
 .nav-links a{
   color:white;
-  font-size:14px;
   text-decoration:none;
+  font-size:14px;
 }
 
 .nav-cta{
@@ -77,7 +83,7 @@ img{
   border-radius:999px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 #hero{
   position:relative;
   min-height:100vh;
@@ -87,17 +93,16 @@ img{
   overflow:hidden;
 }
 
-/* TEXTURE OVERLAY */
+/* texture */
 #hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background-image:url("https://www.transparenttextures.com/patterns/canvas.png");
-  opacity:0.15;
-  pointer-events:none;
+  background:url("https://www.transparenttextures.com/patterns/canvas.png");
+  opacity:0.12;
 }
 
-/* LIGHTING GRADIENT */
+/* lighting */
 .hero-glow{
   position:absolute;
   inset:0;
@@ -106,26 +111,16 @@ img{
     radial-gradient(circle at 80% 60%, rgba(255,255,255,0.06), transparent 60%);
 }
 
-/* HERO INNER */
 .hero-inner{
   padding-top:120px;
   padding-bottom:80px;
 }
 
-/* HERO CONTENT */
 .hero-content{
   max-width:640px;
-  margin-left:clamp(20px, 6vw, 90px);
+  margin-left:clamp(24px,6vw,100px);
   position:relative;
   z-index:2;
-}
-
-/* HERO TEXT */
-.hero-eyebrow{
-  color:rgba(255,255,255,0.5);
-  font-size:12px;
-  letter-spacing:2px;
-  margin-bottom:20px;
 }
 
 .hero-headline{
@@ -143,61 +138,116 @@ img{
 
 .hero-sub{
   color:rgba(255,255,255,0.65);
-  line-height:1.7;
   margin-bottom:30px;
+  line-height:1.7;
 }
 
-/* BUTTONS */
+.hero-actions{
+  display:flex;
+  gap:12px;
+}
+
 .btn{
   padding:14px 26px;
   border-radius:999px;
   font-weight:600;
-  cursor:pointer;
   border:none;
+  cursor:pointer;
 }
 
-.btn-primary{
-  background:var(--sage);
-}
-
+.btn-primary{background:var(--sage);}
 .btn-outline{
   background:transparent;
   border:1px solid rgba(255,255,255,0.4);
   color:white;
 }
 
-/* BUTTON ROW */
-.hero-actions{
-  display:flex;
-  gap:12px;
+/* ================= SERVICES ================= */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
-/* ABOUT SECTION */
-.section{
-  padding:100px 0;
+.card{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  border:1px solid var(--taupe);
 }
 
+/* ================= ABOUT ================= */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:60px;
 }
 
-/* FOUNDER IMAGE */
 .founder-photo{
   width:100%;
   aspect-ratio:3/4;
-  border-radius:22px;
+  border-radius:20px;
   background-image:url("Founder Image.png");
   background-size:cover;
   background-position:center;
 }
 
-/* MOBILE */
-@media(max-width:768px){
+/* ================= RESULTS ================= */
+.results{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.result-card{
+  padding:30px;
+  background:white;
+  border-radius:16px;
+  border:1px solid var(--taupe);
+}
+
+/* ================= CTA ================= */
+#cta{
+  background:var(--charcoal);
+  color:white;
+  text-align:center;
+}
+
+#cta::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("https://www.transparenttextures.com/patterns/canvas.png");
+  opacity:0.08;
+}
+
+.cta-inner{
+  position:relative;
+  z-index:2;
+}
+
+.cta h2{
+  font-family:'PT Serif';
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--charcoal);
+  color:white;
+  padding:40px;
+  text-align:center;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .services-grid{grid-template-columns:1fr;}
+  .results{grid-template-columns:1fr;}
   .grid{grid-template-columns:1fr;}
   .hero-content{margin-left:0;}
 }
+
 </style>
 </head>
 
@@ -206,70 +256,90 @@ img{
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    
-    <a href="#" class="nav-logo">
-      <img src="NavIcon.svg" alt="Logo">
-    </a>
-
+    <a class="nav-logo"><img src="NavIcon.svg"></a>
     <ul class="nav-links">
       <li><a href="#">Services</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Results</a></li>
       <li><a href="#">Templates</a></li>
-      <li><a href="#" class="nav-cta">Book a Call</a></li>
+      <li><a class="nav-cta">Book a Call</a></li>
     </ul>
-
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-glow"></div>
+<div class="hero-glow"></div>
+<div class="container hero-inner">
+<div class="hero-content">
 
-  <div class="container hero-inner">
-    <div class="hero-content">
+<h1 class="hero-headline">
+Your Instagram should<br>
+<em>bring in clients.</em><br>
+Not just look pretty.
+</h1>
 
-      <div class="hero-eyebrow">
-        INSTAGRAM MANAGEMENT FOR BEAUTY & SERVICE BRANDS
-      </div>
+<p class="hero-sub">
+We manage your Instagram so your content converts into bookings.
+</p>
 
-      <h1 class="hero-headline">
-        Your Instagram should <br>
-        <em>bring in clients.</em><br>
-        Not just look pretty.
-      </h1>
+<div class="hero-actions">
+<button class="btn btn-primary">Get Free Audit</button>
+<button class="btn btn-outline">See Results</button>
+</div>
 
-      <p class="hero-sub">
-        We manage your Instagram strategy, content, and posting so your brand attracts the right audience and converts them into bookings.
-      </p>
+</div>
+</div>
+</section>
 
-      <div class="hero-actions">
-        <button class="btn btn-primary">Get Your Free Instagram Audit →</button>
-        <button class="btn btn-outline">See Client Results</button>
-      </div>
+<!-- SERVICES -->
+<section class="section container">
+<h2>Services</h2>
+<div class="services-grid">
 
-    </div>
-  </div>
+<div class="card">Content Creation</div>
+<div class="card">Instagram Management</div>
+<div class="card">Strategy & Audit</div>
+
+</div>
 </section>
 
 <!-- ABOUT -->
-<section class="section">
-  <div class="container grid">
+<section class="section container grid">
 
-    <div class="founder-photo"></div>
+<div class="founder-photo"></div>
 
-    <div>
-      <h2 style="font-family:'PT Serif'; font-size:32px; margin-bottom:16px;">
-        Hi, I'm Courtney.
-      </h2>
+<div>
+<h2>Hi, I'm Courtney.</h2>
+<p>I help brands turn Instagram into a client machine.</p>
+</div>
 
-      <p style="line-height:1.7;">
-        I help brands turn Instagram into a client acquisition machine through strategy-led content and intentional growth.
-      </p>
-    </div>
-
-  </div>
 </section>
+
+<!-- RESULTS -->
+<section class="section container">
+<h2>Results</h2>
+<div class="results">
+
+<div class="result-card">More DMs</div>
+<div class="result-card">Better Content</div>
+<div class="result-card">More Time Back</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="section">
+<div class="cta-inner">
+<h2>Ready to grow your Instagram?</h2>
+<button class="btn btn-primary">Book a Call</button>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+With Love Socials © 2026
+</footer>
 
 </body>
 </html>
