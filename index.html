@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>With Love Socials · Made with Love. Posted with Purpose.</title>
+  <link rel="icon" type="image/png" href="favicon.png.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -444,41 +445,6 @@
     }
     .hero-note svg { width: 13px; height: 13px; opacity: 0.5; }
 
-    /* Hero right column — brand value cards */
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .value-card {
-      padding: 22px 26px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(246,244,241,0.08);
-      background: rgba(246,244,241,0.04);
-      backdrop-filter: blur(6px);
-      transition: background 0.3s, border-color 0.3s, transform 0.3s;
-    }
-    .value-card:hover {
-      background: rgba(246,244,241,0.07);
-      border-color: rgba(173,186,183,0.22);
-      transform: translateX(-4px);
-    }
-    .value-card-icon {
-      font-size: 1.3rem;
-      margin-bottom: 9px;
-    }
-    .value-card h4 {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ivory);
-      margin-bottom: 5px;
-    }
-    .value-card p {
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: rgba(246,244,241,0.5);
-    }
 
     /* ============================================================
        WHO I WORK WITH STRIP
@@ -1132,7 +1098,6 @@
     @media (max-width: 960px) {
       .section { padding: 72px 0; }
       .hero-inner { grid-template-columns: 1fr; gap: 44px; padding-top: 100px; }
-      .hero-right { display: grid; grid-template-columns: 1fr 1fr; }
 
       .results-intro { grid-template-columns: 1fr; gap: 32px; }
       .outcome-grid { grid-template-columns: 1fr 1fr; }
@@ -1148,7 +1113,7 @@
       .outcome-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .hero-right { grid-template-columns: 1fr; }
+
       .case-teaser { padding: 28px 24px; }
       .case-stats { grid-template-columns: 1fr 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
@@ -1414,7 +1379,7 @@
       width: 100%;
       aspect-ratio: 3 / 4;
       border-radius: var(--radius-lg);
-      background-image: url("Founder Image.png");
+      background-image: url("Founder image.png");
       background-size: cover;
       background-position: center;
     }
@@ -1622,24 +1587,6 @@
             <span class="proof-dot"></span>
             <span><strong>Boutique roster.</strong> You will not get lost.</span>
           </div>
-        </div>
-      </div>
-
-      <div class="hero-right fade-up delay-2">
-        <div class="value-card">
-          <div class="value-card-icon">✦</div>
-          <h4>Strategy before every post</h4>
-          <p>No random posting. Every caption, Reel, and story has a reason behind it tied to your goals.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-card-icon">◌</div>
-          <h4>You get our full attention</h4>
-          <p>Small roster on purpose. You are not a ticket number. We know your brand, your voice, your clients.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-card-icon">♡</div>
-          <h4>Sounds like you, not a template</h4>
-          <p>Content that reads like you wrote it on your best day. Your audience will feel the difference.</p>
         </div>
       </div>
     </div>
