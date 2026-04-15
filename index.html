@@ -1,344 +1,2235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>With Love Socials</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>With Love Socials · Made with Love. Posted with Purpose.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
 
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    /* ============================================================
+       BRAND TOKENS — With Love Socials
+       Source: Brand Guidelines 2025
+    ============================================================ */
+    :root {
+      /* Core palette */
+      --ivory:       #F6F4F1;   /* Warm Ivory — primary background */
+      --taupe:       #C7C1B8;   /* Soft Taupe — borders, secondary surfaces */
+      --mocha:       #9C8F84;   /* Muted Mocha — labels, captions */
+      --charcoal:    #2F2F2F;   /* Charcoal — primary text, logo, dark sections */
+      --sage:        #ADBAB7;   /* Muted Sage — accents and highlights */
 
-<style>
+      /* Extended tints */
+      --sage-light:  #E8EEEC;   /* Very light sage for card backgrounds */
+      --sage-dark:   #8FA4A1;   /* Deeper sage for hover states */
+      --ivory-dark:  #EDE9E3;   /* Slightly darker ivory for alternating sections */
+      --charcoal-80: #4A4A4A;   /* Lighter charcoal for secondary text */
+      --charcoal-50: #979797;   /* Mid-tone for muted text */
+      --charcoal-card: #3A3530; /* Warm dark for cards on dark backgrounds */
 
-/* ================= BASE ================= */
-:root{
-  --ivory:#F6F4F1;
-  --taupe:#C7C1B8;
-  --mocha:#9C8F84;
-  --charcoal:#2F2F2F;
-  --sage:#ADBAB7;
-  --radius-lg:22px;
-}
+      /* Typography */
+      --font-serif: 'PT Serif', Georgia, serif;
+      --font-sans:  'Public Sans', system-ui, sans-serif;
 
-*{margin:0;padding:0;box-sizing:border-box;}
+      /* Spacing & Shape */
+      --radius-sm:   6px;
+      --radius-md:   14px;
+      --radius-lg:   22px;
+      --radius-pill: 999px;
 
-body{
-  font-family:'Public Sans',sans-serif;
-  background:var(--ivory);
-  color:var(--charcoal);
-}
+      /* Shadows */
+      --shadow-sm: 0 2px 10px rgba(47,47,47,0.06);
+      --shadow-md: 0 8px 28px rgba(47,47,47,0.10);
+      --shadow-lg: 0 20px 56px rgba(47,47,47,0.13);
+    }
 
-/* FIXED IMAGE HANDLING */
-img{
-  display:block;
-  width:auto;
-  height:100%;
-  object-fit:contain;
-}
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
 
-.container{
-  max-width:1120px;
-  margin:auto;
-  padding:0 28px;
-}
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .section     { padding: 96px 0; }
+    .section-sm  { padding: 64px 0; }
+    .text-center { text-align: center; }
+    .text-ivory  { color: var(--ivory); }
+    .text-mocha  { color: var(--mocha); }
+    .text-sage   { color: var(--sage-dark); }
+    .text-muted  { color: var(--charcoal-80); }
 
-.section{
-  padding:90px 0;
-}
+    /* ============================================================
+       TYPOGRAPHY SCALE
+    ============================================================ */
+    .display {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    .display em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .heading-xl {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.14;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .heading-xl em { font-style: italic; font-weight: 400; }
+    .heading-lg {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.22;
+      text-wrap: balance;
+    }
+    .heading-lg em { font-style: italic; font-weight: 400; }
+    .heading-md {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+    .subhead {
+      font-family: var(--font-sans);
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--charcoal-80);
+    }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--mocha);
+    }
 
-/* ================= NAV ================= */
-#navbar{
-  position:fixed;
-  width:100%;
-  z-index:100;
-}
+    /* ============================================================
+       SECTION LABEL PILL
+    ============================================================ */
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 15px;
+      background: var(--sage-light);
+      color: var(--sage-dark);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .pill-label-dark {
+      background: rgba(173,186,183,0.18);
+      color: #C8D5D3;
+    }
+    .pill-label-mocha {
+      background: rgba(156,143,132,0.13);
+      color: var(--mocha);
+    }
 
-.nav-inner{
-  max-width:1120px;
-  margin:auto;
-  height:70px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 28px;
-}
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-color: var(--charcoal);
+    }
+    .btn-primary:hover {
+      background: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(47,47,47,0.28);
+    }
+    .btn-sage {
+      background: var(--sage);
+      color: var(--charcoal);
+      border-color: var(--sage);
+    }
+    .btn-sage:hover {
+      background: var(--sage-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(173,186,183,0.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      border-color: var(--taupe);
+    }
+    .btn-outline:hover {
+      border-color: var(--charcoal);
+    }
+    .btn-outline-ivory {
+      background: transparent;
+      color: var(--ivory);
+      border-color: rgba(246,244,241,0.35);
+    }
+    .btn-outline-ivory:hover {
+      background: rgba(246,244,241,0.09);
+      border-color: rgba(246,244,241,0.65);
+    }
+    .btn-lg { padding: 17px 38px; font-size: 0.97rem; }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.2s ease; }
+    .btn:hover svg { transform: translateX(3px); }
 
-/* ✅ FIXED LOGO */
-.nav-logo-img{
-  height:36px;
-  width:auto;
-  object-fit:contain;
-}
+    /* ============================================================
+       FADE-IN ANIMATION
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.17s; }
+    .delay-3 { transition-delay: 0.26s; }
+    .delay-4 { transition-delay: 0.35s; }
+    .delay-5 { transition-delay: 0.44s; }
 
-.nav-links{
-  display:flex;
-  gap:28px;
-  list-style:none;
-}
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 28px;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(246,244,241,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(47,47,47,0.07);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-}
+    /* Logo — replace the SVG below with your actual WL monogram image file */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ivory);
+      transition: color 0.35s ease;
+      line-height: 1;
+    }
+    .logo-tagline {
+      font-family: var(--font-serif);
+      font-size: 0.65rem;
+      font-style: italic;
+      color: rgba(246,244,241,0.55);
+      transition: color 0.35s ease;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    #navbar.scrolled .logo-text { color: var(--charcoal); }
+    #navbar.scrolled .logo-tagline { color: var(--mocha); }
+    /* SVG mark color swaps */
+    .mark-light { fill: var(--ivory); transition: fill 0.35s; }
+    #navbar.scrolled .mark-light { fill: var(--charcoal); }
 
-.nav-cta{
-  border:1px solid rgba(255,255,255,0.4);
-  padding:10px 20px;
-  border-radius:999px;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.87rem;
+      font-weight: 500;
+      color: rgba(246,244,241,0.75);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ivory); }
+    #navbar.scrolled .nav-links a { color: var(--charcoal-80); }
+    #navbar.scrolled .nav-links a:hover { color: var(--charcoal); }
 
-/* ================= HERO ================= */
-#hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  background:var(--charcoal);
-  overflow:hidden;
-}
+    .nav-cta {
+      font-size: 0.87rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      background: transparent;
+      border: 1.5px solid rgba(246,244,241,0.4);
+      color: var(--ivory) !important;
+      transition: all 0.22s ease;
+    }
+    .nav-cta:hover {
+      background: rgba(246,244,241,0.1);
+      border-color: rgba(246,244,241,0.7);
+    }
+    #navbar.scrolled .nav-cta {
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+      color: var(--ivory) !important;
+    }
+    #navbar.scrolled .nav-cta:hover { background: #1a1a1a; }
 
-/* ✅ TEXTURE + LIGHTING */
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse 70% 55% at 75% 30%, rgba(173,186,183,0.10), transparent 60%),
-    radial-gradient(ellipse 50% 70% at 10% 90%, rgba(156,143,132,0.08), transparent 55%),
-    url("https://www.transparenttextures.com/patterns/canvas.png");
-  opacity:0.25;
-}
+    /* ============================================================
+       HERO SECTION
+       Background: Charcoal — brand-consistent premium entry point
+    ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+    /* Subtle warm texture overlay */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 75% 30%, rgba(173,186,183,0.10), transparent 60%),
+        radial-gradient(ellipse 50% 70% at 10% 90%, rgba(156,143,132,0.08), transparent 55%),
+        url("https://www.transparenttextures.com/patterns/canvas.png");
+      opacity: 0.25;
+    }
+    /* REPLACE: Uncomment and add your hero photo here
+       .hero-photo {
+         position: absolute; inset: 0;
+         background: url('your-hero-photo.jpg') center/cover no-repeat;
+         opacity: 0.18;
+       }
+    */
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 120px 28px 90px;
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .hero-content {
+      max-width: 640px;
+      margin-left: clamp(24px, 6vw, 100px);
+    }
 
-.hero-inner{
-  padding-top:120px;
-  padding-bottom:80px;
-}
+    /* Eyebrow */
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 16px;
+      border: 1px solid rgba(173,186,183,0.35);
+      border-radius: var(--radius-pill);
+      color: var(--sage);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      animation: breathe 2.4s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
 
-/* ✅ FIXED HERO SPACING */
-.hero-content{
-  max-width:640px;
-  margin-left:clamp(24px,6vw,100px);
-  position:relative;
-  z-index:2;
-}
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 5.5vw, 5.4rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ivory);
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+    .hero-headline em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sage);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      line-height: 1.75;
+      color: rgba(246,244,241,0.62);
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+    .hero-sub strong { color: rgba(246,244,241,0.88); font-weight: 500; }
 
-.hero-headline{
-  font-family:'PT Serif',serif;
-  font-size:clamp(3rem,6vw,5rem);
-  line-height:1.05;
-  color:white;
-  margin-bottom:20px;
-}
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-bottom: 52px;
+    }
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.78rem;
+      color: rgba(246,244,241,0.38);
+    }
+    .hero-note svg { width: 13px; height: 13px; opacity: 0.5; }
 
-.hero-headline em{
-  color:var(--sage);
-  font-style:italic;
-}
+    /* Hero right column — brand value cards */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .value-card {
+      padding: 22px 26px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(246,244,241,0.08);
+      background: rgba(246,244,241,0.04);
+      backdrop-filter: blur(6px);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .value-card:hover {
+      background: rgba(246,244,241,0.07);
+      border-color: rgba(173,186,183,0.22);
+      transform: translateX(-4px);
+    }
+    .value-card-icon {
+      font-size: 1.3rem;
+      margin-bottom: 9px;
+    }
+    .value-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 5px;
+    }
+    .value-card p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(246,244,241,0.5);
+    }
 
-.hero-sub{
-  color:rgba(255,255,255,0.65);
-  margin-bottom:30px;
-  line-height:1.7;
-}
+    /* ============================================================
+       WHO I WORK WITH STRIP
+    ============================================================ */
+    #who-strip {
+      background: var(--ivory-dark);
+      border-top: 1px solid var(--taupe);
+      border-bottom: 1px solid var(--taupe);
+      padding: 30px 28px;
+    }
+    .who-strip-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+    .who-strip-label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      white-space: nowrap;
+      padding-right: 16px;
+      border-right: 1px solid var(--taupe);
+    }
+    .industry-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--charcoal-80);
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--taupe);
+      background: var(--ivory);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .industry-tag:hover { border-color: var(--mocha); color: var(--charcoal); }
 
-.hero-actions{
-  display:flex;
-  gap:12px;
-}
+    /* ============================================================
+       SERVICES SECTION
+    ============================================================ */
+    #services {
+      background: var(--ivory);
+    }
+    .section-header {
+      max-width: 580px;
+      margin: 0 auto 60px;
+    }
+    .section-header p {
+      margin-top: 14px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--ivory-dark);
+      border: 1px solid var(--taupe);
+      border-radius: var(--radius-lg);
+      padding: 34px 30px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage) 0%, transparent 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--mocha);
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+    .service-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--charcoal);
+    }
+    .service-card p {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--charcoal-80);
+    }
+    .service-coming-soon {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      background: var(--sage-light);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
 
-.btn{
-  padding:14px 26px;
-  border-radius:999px;
-  font-weight:600;
-  border:none;
-  cursor:pointer;
-}
+    /* ============================================================
+       ABOUT / STORY SECTION — differentiator list (shared styles)
+    ============================================================ */
+    .differentiator-list {
+      list-style: none;
+    }
+    .differentiator-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(246,244,241,0.07);
+    }
+    .differentiator-list li:first-child { padding-top: 0; }
+    .differentiator-list li:last-child { border-bottom: none; }
+    .diff-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid var(--sage);
+      color: var(--sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .diff-text strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 0.97rem;
+      color: var(--ivory);
+      margin-bottom: 4px;
+    }
+    .diff-text span {
+      font-size: 0.84rem;
+      line-height: 1.65;
+      color: rgba(246,244,241,0.48);
+    }
 
-.btn-primary{background:var(--sage);}
-.btn-outline{
-  background:transparent;
-  border:1px solid rgba(255,255,255,0.4);
-  color:white;
-}
+    /* ============================================================
+       RESULTS SECTION
+    ============================================================ */
+    #results {
+      background: var(--ivory);
+    }
+    .results-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+    .results-statement {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--charcoal-80);
+      border-left: 2px solid var(--taupe);
+      padding-left: 22px;
+      margin-top: 18px;
+    }
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .outcome-card {
+      background: var(--ivory-dark);
+      border: 1px solid var(--taupe);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .outcome-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .outcome-icon { font-size: 1.5rem; margin-bottom: 14px; }
+    .outcome-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--charcoal);
+    }
+    .outcome-card p {
+      font-size: 0.83rem;
+      line-height: 1.65;
+      color: var(--charcoal-80);
+    }
 
-/* ================= SERVICES ================= */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
+    /* Case study teaser */
+    .case-teaser {
+      margin-top: 20px;
+      background: var(--charcoal);
+      border-radius: var(--radius-lg);
+      padding: 44px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .case-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 14px;
+    }
+    .case-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1.22;
+      margin-bottom: 14px;
+    }
+    .case-headline em { font-style: italic; font-weight: 400; color: var(--sage); }
+    .case-body {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(246,244,241,0.52);
+      margin-bottom: 26px;
+    }
+    .case-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .case-stat .num {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .case-stat .num span { color: var(--sage); }
+    .case-stat .desc {
+      font-size: 0.78rem;
+      color: rgba(246,244,241,0.42);
+      margin-top: 4px;
+    }
 
-.card{
-  background:white;
-  padding:30px;
-  border-radius:16px;
-  border:1px solid var(--taupe);
-}
+    /* ============================================================
+       PROCESS SECTION
+    ============================================================ */
+    #process {
+      background: var(--ivory-dark);
+      border-top: 1px solid var(--taupe);
+      border-bottom: 1px solid var(--taupe);
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 60px;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 26px;
+      left: calc(12.5% + 26px);
+      right: calc(12.5% + 26px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--sage) 0%, var(--taupe) 100%);
+    }
+    .process-step { text-align: center; padding: 0 22px; }
+    .step-circle {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--ivory);
+      border: 1px solid var(--taupe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--mocha);
+      position: relative;
+      z-index: 1;
+      transition: all 0.28s ease;
+    }
+    .process-step:hover .step-circle {
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+      color: var(--ivory);
+      transform: scale(1.08);
+    }
+    .process-step h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 9px;
+      color: var(--charcoal);
+    }
+    .process-step p {
+      font-size: 0.83rem;
+      line-height: 1.65;
+      color: var(--charcoal-80);
+    }
 
-/* ================= ABOUT ================= */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-}
+    /* ============================================================
+       TESTIMONIALS SECTION
+    ============================================================ */
+    #testimonials {
+      background: var(--ivory);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .testi-card {
+      background: var(--ivory-dark);
+      border: 1px solid var(--taupe);
+      border-radius: var(--radius-lg);
+      padding: 32px 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .testi-card.featured {
+      background: var(--charcoal);
+      border-color: transparent;
+      box-shadow: var(--shadow-md);
+    }
+    .stars {
+      display: flex; gap: 3px;
+      margin-bottom: 16px;
+    }
+    .star { color: #C9A96E; font-size: 0.88rem; }
+    .testi-quote {
+      font-family: var(--font-serif);
+      font-size: 0.93rem;
+      font-style: italic;
+      line-height: 1.72;
+      color: var(--charcoal-80);
+      margin-bottom: 22px;
+    }
+    .testi-card.featured .testi-quote { color: rgba(246,244,241,0.68); }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--mocha);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; color: var(--ivory);
+      flex-shrink: 0;
+      /* REPLACE: swap background with actual client photo using background-image or <img> */
+    }
+    .author-name {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+    .testi-card.featured .author-name { color: var(--ivory); }
+    .author-role {
+      font-size: 0.75rem;
+      color: var(--mocha);
+      margin-top: 1px;
+    }
+    .testi-card.featured .author-role { color: rgba(246,244,241,0.4); }
 
-/* ✅ FIXED FOUNDER IMAGE */
-.founder-photo{
-  width:100%;
-  aspect-ratio:3/4;
-  border-radius:var(--radius-lg);
-  background-image:url("Founder Image.png");
-  background-size:cover;
-  background-position:center;
-}
+    /* ============================================================
+       TEMPLATES TEASER SECTION
+    ============================================================ */
+    #templates {
+      background: var(--sage-light);
+      border-top: 1px solid rgba(173,186,183,0.3);
+      border-bottom: 1px solid rgba(173,186,183,0.3);
+    }
+    .templates-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .templates-left {}
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      background: white;
+      border: 1px solid rgba(173,186,183,0.5);
+      border-radius: var(--radius-pill);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 22px;
+    }
+    .coming-soon-badge .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--sage-dark);
+      animation: breathe 2.4s ease-in-out infinite;
+    }
+    .templates-left h2 {
+      margin-bottom: 14px;
+    }
+    .templates-left p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: var(--charcoal-80);
+      margin-bottom: 28px;
+    }
+    .template-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 32px;
+    }
+    .template-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(173,186,183,0.45);
+      background: white;
+      color: var(--charcoal-80);
+    }
+    .templates-right {}
+    .email-capture-card {
+      background: white;
+      border: 1px solid rgba(173,186,183,0.4);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .email-capture-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 9px;
+      color: var(--charcoal);
+    }
+    .email-capture-card p {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--charcoal-80);
+      margin-bottom: 22px;
+    }
+    .email-form {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .email-form input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--taupe);
+      background: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-form input::placeholder { color: var(--charcoal-50); }
+    .email-form input:focus { border-color: var(--sage-dark); }
+    .email-form button {
+      width: 100%;
+      padding: 13px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--charcoal);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .email-form button:hover { background: #1a1a1a; transform: translateY(-1px); }
+    .email-note {
+      margin-top: 10px;
+      font-size: 0.73rem;
+      color: var(--charcoal-50);
+      text-align: center;
+    }
+    .template-preview-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .template-preview-thumb {
+      aspect-ratio: 9/16;
+      border-radius: var(--radius-md);
+      background: var(--ivory-dark);
+      border: 1px solid var(--taupe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.25s;
+      /* REPLACE: Add actual template preview screenshots as background-image */
+    }
+    .template-preview-thumb:hover { transform: scale(1.04); }
+    .thumb-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0deg, rgba(47,47,47,0.6) 0%, transparent 100%);
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--ivory);
+      text-align: center;
+      padding: 10px 6px 7px;
+    }
 
-/* ================= RESULTS ================= */
-.results{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
+    /* ============================================================
+       FINAL CTA SECTION
+    ============================================================ */
+    #cta-final {
+      background: var(--charcoal);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(173,186,183,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--ivory);
+      letter-spacing: -0.015em;
+      margin-bottom: 18px;
+    }
+    .cta-headline em { font-style: italic; font-weight: 400; color: var(--sage); }
+    .cta-sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(246,244,241,0.52);
+      margin-bottom: 38px;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+    .cta-micro {
+      margin-top: 24px;
+      font-size: 0.76rem;
+      color: rgba(246,244,241,0.28);
+    }
 
-.result-card{
-  padding:30px;
-  background:white;
-  border-radius:16px;
-  border:1px solid var(--taupe);
-}
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(246,244,241,0.07);
+      padding: 36px 28px;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .footer-brand {}
+    .footer-logo-text {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.03em;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-size: 0.72rem;
+      font-style: italic;
+      color: var(--mocha);
+      margin-top: 2px;
+    }
+    .footer-links {
+      display: flex; gap: 24px; list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(246,244,241,0.32);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(246,244,241,0.7); }
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      color: rgba(246,244,241,0.38);
+    }
+    .footer-social a {
+      color: var(--sage);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: #C8D5D3; }
 
-/* ================= CTA ================= */
-#cta{
-  background:var(--charcoal);
-  color:white;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 960px) {
+      .section { padding: 72px 0; }
+      .hero-inner { grid-template-columns: 1fr; gap: 44px; padding-top: 100px; }
+      .hero-right { display: grid; grid-template-columns: 1fr 1fr; }
 
-/* texture on CTA */
-#cta::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("https://www.transparenttextures.com/patterns/canvas.png");
-  opacity:0.08;
-}
+      .results-intro { grid-template-columns: 1fr; gap: 32px; }
+      .outcome-grid { grid-template-columns: 1fr 1fr; }
+      .case-teaser { grid-template-columns: 1fr; gap: 32px; }
+      .templates-inner { grid-template-columns: 1fr; gap: 44px; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .process-grid::before { display: none; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 56px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .outcome-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .hero-right { grid-template-columns: 1fr; }
+      .case-teaser { padding: 28px 24px; }
+      .case-stats { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: 14px; }
+      .template-preview-row { display: none; }
+    }
+    @media (max-width: 440px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .cta-actions .btn { justify-content: center; }
+    }
 
-.cta-inner{
-  position:relative;
-  z-index:2;
-}
+    /* ============================================================
+       ACCESSIBILITY: FOCUS VISIBLE
+    ============================================================ */
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 2px solid var(--sage-dark);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
 
-.cta-inner h2{
-  font-family:'PT Serif';
-  font-size:42px;
-  margin-bottom:20px;
-}
+    /* ============================================================
+       ACCESSIBILITY: REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .hero-eyebrow .dot,
+      .coming-soon-badge .dot { animation: none !important; }
+      .logos-track { animation: none !important; }
+      * { transition-duration: 0.01ms !important; }
+    }
 
-/* ================= FOOTER ================= */
-footer{
-  background:var(--charcoal);
-  color:white;
-  padding:40px;
-  text-align:center;
-}
+    /* ============================================================
+       MID-PAGE CTA BLOCK
+    ============================================================ */
+    #mid-cta {
+      background: var(--ivory-dark);
+      border-top: 1px solid var(--taupe);
+      border-bottom: 1px solid var(--taupe);
+      padding: 56px 0;
+    }
+    .mid-cta-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .mid-cta-text {}
+    .mid-cta-text h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .mid-cta-text h3 em { font-style: italic; font-weight: 400; }
+    .mid-cta-text p {
+      font-size: 0.9rem;
+      color: var(--charcoal-80);
+      line-height: 1.65;
+    }
+    .mid-cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .mid-cta-note {
+      font-size: 0.72rem;
+      color: var(--mocha);
+      text-align: center;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .mid-cta-inner { grid-template-columns: 1fr; gap: 24px; }
+      .mid-cta-actions { align-items: flex-start; }
+      .mid-cta-note { white-space: normal; }
+    }
 
-/* ================= MOBILE ================= */
-@media(max-width:900px){
-  .services-grid{grid-template-columns:1fr;}
-  .results{grid-template-columns:1fr;}
-  .grid{grid-template-columns:1fr;}
-  .hero-content{margin-left:0;}
-}
+    /* ============================================================
+       MOBILE HAMBURGER MENU
+    ============================================================ */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 101;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--ivory);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+    #navbar.scrolled .hamburger span { background: var(--charcoal); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(246,244,241,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      padding: 10px 0;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--sage-dark); }
+    .mobile-nav .mobile-cta-btn {
+      margin-top: 16px;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 36px;
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.01em;
+    }
+    .mobile-nav .mobile-cta-btn:hover { background: #1a1a1a; }
+    @media (max-width: 960px) {
+      .hamburger { display: flex; }
+    }
 
-</style>
+    /* ============================================================
+       MOBILE STICKY BOTTOM CTA BAR
+    ============================================================ */
+    #mobile-sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 98;
+      background: rgba(246,244,241,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--taupe);
+      padding: 12px 20px;
+      transform: translateY(100%);
+      transition: transform 0.35s ease;
+    }
+    #mobile-sticky-bar.visible { transform: translateY(0); }
+    .sticky-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .sticky-bar-text {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--charcoal-80);
+      line-height: 1.3;
+    }
+    .sticky-bar-text strong { color: var(--charcoal); font-style: normal; font-weight: 700; }
+    .sticky-bar-btn {
+      flex-shrink: 0;
+      padding: 11px 22px;
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .sticky-bar-btn:hover { background: #1a1a1a; }
+    @media (max-width: 960px) {
+      #mobile-sticky-bar { display: block; }
+    }
+
+    /* ============================================================
+       HERO SOCIAL PROOF STRIP (below CTA in hero)
+    ============================================================ */
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(246,244,241,0.1);
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: rgba(246,244,241,0.5);
+    }
+    .proof-item .proof-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+    }
+    .proof-item strong { color: rgba(246,244,241,0.8); font-weight: 500; }
+
+    /* ============================================================
+       STORY SECTION SPACING FIX (remove need for br tags)
+    ============================================================ */
+    .story-body + .story-body { margin-top: 16px; }
+
+    /* ============================================================
+       ABOUT / FOUNDER SECTION REDESIGN
+    ============================================================ */
+    #story {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+    #story::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(173,186,183,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 72px;
+      align-items: start;
+    }
+    /* Photo column */
+    .founder-frame {
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius-lg);
+      background-image: url("Founder Image.png");
+      background-size: cover;
+      background-position: center;
+    }
+    .founder-photo-placeholder {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(246,244,241,0.2);
+      font-size: 0.75rem;
+      font-family: var(--font-sans);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 20px;
+    }
+    .founder-photo-placeholder svg {
+      width: 48px; height: 48px;
+      opacity: 0.2;
+    }
+    /* Name card overlapping bottom of photo */
+    .founder-nameplate {
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      background: var(--ivory);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-lg);
+    }
+    .founder-nameplate-left {}
+    .founder-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+    .founder-title {
+      font-size: 0.72rem;
+      color: var(--mocha);
+      margin-top: 2px;
+      font-family: var(--font-sans);
+    }
+    .founder-ig {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--sage-dark);
+      font-family: var(--font-sans);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .founder-ig:hover { color: var(--charcoal); }
+    .founder-ig svg { width: 14px; height: 14px; }
+    /* Right / text column */
+    .about-intro {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .about-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ivory);
+      letter-spacing: -0.015em;
+      margin-bottom: 22px;
+      text-wrap: balance;
+    }
+    .about-headline em { font-style: italic; font-weight: 400; color: var(--sage); }
+    .about-body {
+      font-size: 0.93rem;
+      line-height: 1.82;
+      color: rgba(246,244,241,0.6);
+      margin-bottom: 14px;
+    }
+    .about-body strong { color: rgba(246,244,241,0.88); font-weight: 500; }
+    .about-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--sage);
+      opacity: 0.4;
+      margin: 28px 0;
+    }
+    @media (max-width: 960px) {
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      .founder-frame { max-width: 360px; }
+    }
+    @media (max-width: 640px) {
+      .founder-frame { max-width: 100%; }
+    }
+
+  </style>
 </head>
-
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#hero">
-      <img src="NavIcon.svg" alt="Logo" class="nav-logo-img">
-    </a>
+  <!-- ================================================================
+       NAVIGATION
+  ================================================================ -->
+  <nav id="navbar">
+    <div class="nav-inner">
 
-    <ul class="nav-links">
-      <li><a href="#">Services</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Results</a></li>
-      <li><a href="#">Templates</a></li>
-      <li><a class="nav-cta">Book a Call</a></li>
-    </ul>
+      <!-- LOGO
+           REPLACE: Replace the SVG + text below with your actual WL monogram files.
+           For light backgrounds (scrolled nav): use wl-monogram-charcoal.svg or .png
+           For dark backgrounds (hero): use wl-monogram-ivory.svg or .png
+           Suggested swap:
+           <a href="#" class="nav-logo">
+             <img id="nav-logo-img" src="wl-monogram-ivory.png" alt="With Love Socials" height="34" />
+           </a>
+           Then in JS below, toggle the src on scroll.
+      -->
+      <a href="#hero" class="nav-logo">
+        <img src="NavIcon.svg" alt="With Love Socials Logo" class="nav-logo-img">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#story">About</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#cta-final" class="nav-cta">Book a Call</a></li>
+      </ul>
+      <!-- Mobile hamburger — visible on tablet/mobile only -->
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile fullscreen nav overlay -->
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#story" class="mobile-nav-link">About</a>
+    <a href="#results" class="mobile-nav-link">Results</a>
+    <a href="#templates" class="mobile-nav-link">Templates</a>
+    <!-- REPLACE: href with your actual booking link -->
+    <a href="#cta-final" class="mobile-cta-btn">Book a Free Call</a>
   </div>
-</nav>
 
-<!-- HERO -->
-<section id="hero">
-<div class="hero-bg"></div>
+  <!-- Mobile sticky bottom CTA bar — appears after scrolling past hero on mobile -->
+  <div id="mobile-sticky-bar" aria-hidden="true">
+    <div class="sticky-bar-inner">
+      <div class="sticky-bar-text">Ready to grow your<br /><strong>Instagram the right way?</strong></div>
+      <!-- REPLACE: href with your actual booking link -->
+      <a href="#cta-final" class="sticky-bar-btn">Book a Free Call</a>
+    </div>
+  </div>
 
-<div class="container hero-inner">
-<div class="hero-content">
+  <!-- ================================================================
+       HERO SECTION
+       REPLACE: Add your brand photography as a background layer.
+       Uncomment .hero-photo in the CSS above and add your image URL.
+  ================================================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner single-column container">
+      <div class="fade-up">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Made with love. Posted with purpose.
+        </div>
+        <h1 class="hero-headline">
+          Your work is beautiful.<br />
+          Your Instagram<br />
+          <em>should say so.</em>
+        </h1>
+        <p class="hero-sub">
+          We work with <strong>medspas, injectors, and beauty brands</strong> who are tired of
+          posting and seeing nothing happen. Strategy-led Instagram management that sounds
+          like you, grows the right audience, and actually books clients.
+          Based in Scottsdale, AZ and working with founders nationwide.
+        </p>
+        <div class="hero-actions">
+          <!-- REPLACE: href with your Calendly or booking link -->
+          <a href="#cta-final" class="btn btn-sage btn-lg">
+            Book a Free Discovery Call
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
+          <a href="#results" class="btn btn-outline-ivory">
+            See client results
+          </a>
+        </div>
+        <div class="hero-social-proof">
+          <div class="proof-item">
+            <span class="proof-dot"></span>
+            <span>Free 30-minute call. <strong>No pitch, no pressure.</strong></span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-dot"></span>
+            <span>Content live <strong>within 48 hours</strong> of onboarding</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-dot"></span>
+            <span><strong>Boutique roster.</strong> You will not get lost.</span>
+          </div>
+        </div>
+      </div>
 
-<h1 class="hero-headline">
-Your Instagram should<br>
-<em>bring in clients.</em><br>
-Not just look pretty.
-</h1>
+      <div class="hero-right fade-up delay-2">
+        <div class="value-card">
+          <div class="value-card-icon">✦</div>
+          <h4>Strategy before every post</h4>
+          <p>No random posting. Every caption, Reel, and story has a reason behind it tied to your goals.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">◌</div>
+          <h4>You get our full attention</h4>
+          <p>Small roster on purpose. You are not a ticket number. We know your brand, your voice, your clients.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">♡</div>
+          <h4>Sounds like you, not a template</h4>
+          <p>Content that reads like you wrote it on your best day. Your audience will feel the difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p class="hero-sub">
-We manage your Instagram so your content converts into bookings.
-</p>
+  <!-- ================================================================
+       WHO I WORK WITH STRIP
+  ================================================================ -->
+  <div id="who-strip">
+    <div class="who-strip-inner">
+      <span class="who-strip-label">Built for brands in</span>
+      <span class="industry-tag">🩺 Medspas &amp; Injectors</span>
+      <span class="industry-tag">💆 Aesthetics &amp; Skincare</span>
+      <span class="industry-tag">✂️ Hair Stylists &amp; Salons</span>
+      <span class="industry-tag">🌿 Wellness &amp; Therapy</span>
+      <span class="industry-tag">🏡 Real Estate</span>
+      <span class="industry-tag">🐾 Pet Businesses</span>
+      <span class="industry-tag">📱 Personal Brands</span>
+    </div>
+  </div>
 
-<div class="hero-actions">
-<button class="btn btn-primary">Get Free Audit</button>
-<button class="btn btn-outline">See Results</button>
-</div>
+  <!-- ================================================================
+       SERVICES SECTION
+  ================================================================ -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <div class="pill-label pill-label-mocha">What We Offer</div>
+        <h2 class="heading-xl">Everything your Instagram needs to grow and <em>feel like you</em></h2>
+        <p class="subhead" style="margin-top:14px">
+          We handle the strategy, the content, and the community so you can put your
+          energy back into the work you actually love doing.
+        </p>
+      </div>
 
-</div>
-</div>
-</section>
+      <div class="services-grid">
+        <div class="service-card fade-up delay-1">
+          <div class="service-icon">✍️</div>
+          <h3>Content Creation</h3>
+          <p>Strategy-led captions, Reels concepts, carousels, and stories built around your brand voice. Not yours to write. Yours to approve.</p>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <div class="service-icon">📅</div>
+          <h3>Full Instagram Management</h3>
+          <p>We take care of the scheduling, hashtag research, posting cadence, and content calendar so your feed stays consistent without you lifting a finger.</p>
+        </div>
+        <div class="service-card fade-up delay-3">
+          <div class="service-icon">💬</div>
+          <h3>Community Management</h3>
+          <p>Real, thoughtful responses to your DMs and comments. Your audience will feel the difference when someone actually cares about what they have to say.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🎯</div>
+          <h3>Strategy &amp; Brand Audit</h3>
+          <p>Not sure where your Instagram is falling short? We go through everything and give you a clear, honest picture of what to keep, what to fix, and what to build.</p>
+        </div>
+        <div class="service-card fade-up delay-1">
+          <div class="service-icon">📊</div>
+          <h3>Reporting &amp; Insights</h3>
+          <p>Monthly reports that tell you exactly what moved the needle and what we're doing next. No smoke and mirrors. Just clarity.</p>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <div class="service-icon">🛍️</div>
+          <h3>Instagram Templates
+            <span class="service-coming-soon">Coming Soon</span>
+          </h3>
+          <p>Done-for-you Canva templates built specifically for beauty and aesthetic brands. Plug in your colors and go. Shop launching soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- SERVICES -->
-<section class="section container">
-<h2>Services</h2>
-<div class="services-grid">
-<div class="card">Content Creation</div>
-<div class="card">Instagram Management</div>
-<div class="card">Strategy & Audit</div>
-</div>
-</section>
+  <!-- ================================================================
+       ABOUT / FOUNDER SECTION
+       REPLACE: Add your photo by setting style="background-image:url('your-photo.jpg');
+                background-size:cover; background-position:center top;" on .founder-photo
+  ================================================================ -->
+  <section id="story" class="section">
+    <div class="container">
+      <div class="about-layout">
 
-<!-- ABOUT -->
-<section class="section container grid">
-<div class="founder-photo"></div>
-<div>
-<h2>Hi, I'm Courtney.</h2>
-<p>I help brands turn Instagram into a client machine.</p>
-</div>
-</section>
+        <!-- Photo column -->
+        <div class="founder-frame fade-up">
+          <div class="founder-photo"></div>
+          <div class="founder-nameplate">
+            <div class="founder-nameplate-left">
+              <div class="founder-name">Courtney</div>
+              <!-- REPLACE: Update title to match how you describe your role -->
+              <div class="founder-title">Founder, With Love Socials</div>
+            </div>
+            <!-- REPLACE: href with your actual Instagram URL -->
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="founder-ig">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+              @withlove_socials
+            </a>
+          </div>
+        </div>
 
-<!-- RESULTS -->
-<section class="section container">
-<h2>Results</h2>
-<div class="results">
-<div class="result-card">More DMs</div>
-<div class="result-card">Better Content</div>
-<div class="result-card">More Time Back</div>
-</div>
-</section>
+        <!-- Text column -->
+        <div class="fade-up delay-2">
+          <div class="pill-label pill-label-dark">The Person Behind the Work</div>
+          <span class="about-intro">Hi, I'm Courtney.</span>
+          <h2 class="about-headline">
+            Your brand deserves a feed as <em>good as what you do.</em>
+          </h2>
+          <p class="about-body">
+            I started With Love Socials because I kept seeing talented founders posting content that
+            did not come close to reflecting the quality of their work. Beautiful businesses with
+            Instagram feeds that looked like everyone else's. <strong>That bothered me.</strong>
+          </p>
+          <p class="about-body">
+            We are a boutique social media agency based in Scottsdale, AZ, and we work with
+            service-based brands who are ready to stop posting just to post. Every client works
+            directly with me. You will never be handed off to someone who has never heard of your brand.
+          </p>
+          <p class="about-body">
+            We keep our roster small on purpose, because doing fewer things exceptionally well has
+            always been more important to us than doing many things at once.
+          </p>
 
-<!-- CTA -->
-<section id="cta" class="section">
-<div class="cta-inner">
-<h2>Ready to grow your Instagram?</h2>
-<button class="btn btn-primary">Book a Call</button>
-</div>
-</section>
+          <div class="about-divider"></div>
 
-<!-- FOOTER -->
-<footer>
-With Love Socials © 2026
-</footer>
+          <ul class="differentiator-list">
+            <li>
+              <div class="diff-mark">✓</div>
+              <div class="diff-text">
+                <strong>Strategy before every post</strong>
+                <span>Every caption and Reel has a purpose. We never create content just to fill a calendar.</span>
+              </div>
+            </li>
+            <li>
+              <div class="diff-mark">✓</div>
+              <div class="diff-text">
+                <strong>You are not just another account</strong>
+                <span>Boutique means we are invested in your brand the way you are. We know your clients, your language, your goals.</span>
+              </div>
+            </li>
+            <li>
+              <div class="diff-mark">✓</div>
+              <div class="diff-text">
+                <strong>Scottsdale-based, serving founders nationwide</strong>
+                <span>Local roots, national reach. We work with brands across the country who want the same personalized care.</span>
+              </div>
+            </li>
+            <li>
+              <div class="diff-mark">✓</div>
+              <div class="diff-text">
+                <strong>Everything you get is yours</strong>
+                <span>All content, strategy, and assets we create belong to you. No lock-in, no games.</span>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#cta-final" class="btn btn-sage" style="margin-top:28px">
+            Let's work together
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       MID-PAGE CTA BLOCK
+       Captures high-intent visitors who are convinced after reading the story section.
+       Research: top agency miss — no CTA between services and final section.
+  ================================================================ -->
+  <div id="mid-cta">
+    <div class="mid-cta-inner fade-up">
+      <div class="mid-cta-text">
+        <h3>Wondering what your Instagram could look like <em>with the right strategy?</em></h3>
+        <p>Book a free call and we will take a real look at your current feed, tell you honestly what we see, and share exactly what we would do differently. No obligations, just clarity.</p>
+      </div>
+      <div class="mid-cta-actions">
+        <!-- REPLACE: href with your Calendly or booking link -->
+        <a href="#cta-final" class="btn btn-primary">
+          Get a Free Instagram Review
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </a>
+        <span class="mid-cta-note">Free 30-min call. No commitment.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       RESULTS SECTION
+       REPLACE: Update case study details with your real client story.
+       The numbers below are placeholders — swap them for your actual results.
+  ================================================================ -->
+  <section id="results" class="section">
+    <div class="container">
+      <div class="results-intro fade-up">
+        <div>
+          <div class="pill-label pill-label-mocha">What Results Actually Look Like</div>
+          <h2 class="heading-xl">
+            Not just a prettier feed.<br />
+            <em>Real outcomes.</em>
+          </h2>
+        </div>
+        <div>
+          <p class="subhead">
+            Likes are nice. Bookings are better. Here is what our clients see
+            when strategy, content, and consistency all come together.
+          </p>
+          <blockquote class="results-statement">
+            "Pretty posts without a strategy are just noise. Pretty posts with a strategy are how you fill your books."
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="outcome-card fade-up delay-1">
+          <div class="outcome-icon">💌</div>
+          <h4>More DMs from the right people</h4>
+          <p>When your content speaks directly to your ideal client, they reach out. Not just followers. The people who are actually ready to book.</p>
+        </div>
+        <div class="outcome-card fade-up delay-2">
+          <div class="outcome-icon">🌱</div>
+          <h4>A feed that finally feels like you</h4>
+          <p>Your Instagram should look as good as your work. Clients who find you online should immediately feel your quality before they ever walk through the door.</p>
+        </div>
+        <div class="outcome-card fade-up delay-3">
+          <div class="outcome-icon">⏳</div>
+          <h4>Hours back in your week</h4>
+          <p>Stop spending Sunday nights stressed about what to post. Hand it off and focus on the part of your business that only you can do.</p>
+        </div>
+      </div>
+
+      <!-- Case Study — REPLACE with your real client story -->
+      <div class="case-teaser fade-up delay-2">
+        <div>
+          <div class="case-label">Featured Client Story</div>
+          <h3 class="case-headline">From invisible to <em>impossible to ignore</em></h3>
+          <!-- REPLACE: Update this story with your real client details -->
+          <p class="case-body">
+            A local beauty brand came to me with a beautiful business and an Instagram that did not
+            come close to reflecting it. No strategy, inconsistent posting, and content that felt
+            generic. We built a full Reels approach around their actual client experience and
+            the results came faster than either of us expected.
+          </p>
+          <a href="#cta-final" class="btn btn-sage">
+            Get results like this
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
+        </div>
+        <div class="case-stats">
+          <!-- REPLACE: All four numbers below with your actual client results -->
+          <div class="case-stat">
+            <div class="num">4<span>x</span></div>
+            <div class="desc">Engagement increase</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">2<span>k+</span></div>
+            <div class="desc">New followers</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">6</div>
+            <div class="desc">New clients from DMs</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">60</div>
+            <div class="desc">Days to results</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PROCESS SECTION
+  ================================================================ -->
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <div class="pill-label pill-label-mocha">How It Works</div>
+        <h2 class="heading-xl">Simple, clear, and <em>low-stress</em></h2>
+        <p class="subhead" style="margin-top:14px">
+          Getting started should feel exciting, not overwhelming. Here is exactly what working
+          together looks like from the first conversation to your first post going live.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step fade-up delay-1">
+          <div class="step-circle">01</div>
+          <h3>We Talk</h3>
+          <p>A free 30-minute discovery call. We want to understand your brand, your goals, and what has not been working. No prep needed on your end.</p>
+        </div>
+        <div class="process-step fade-up delay-2">
+          <div class="step-circle">02</div>
+          <h3>We Build the Strategy</h3>
+          <p>We put together a custom content strategy and package tailored to where you are and where you want to go. You review and approve everything before we move forward.</p>
+        </div>
+        <div class="process-step fade-up delay-3">
+          <div class="step-circle">03</div>
+          <h3>We Go Live</h3>
+          <p>Onboarding, brand guidelines, content pillars, first content batch. You will have posts ready to go within 48 hours of signing off.</p>
+        </div>
+        <div class="process-step fade-up delay-4">
+          <div class="step-circle">04</div>
+          <h3>We Grow Together</h3>
+          <p>Monthly check-ins, real-time reporting, and strategy that evolves as your brand does. This is a relationship, not a transaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TESTIMONIALS SECTION
+       REPLACE: All quotes, names, roles, and avatar colors with real clients.
+       Even short, specific testimonials work beautifully here.
+  ================================================================ -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <div class="pill-label pill-label-mocha">Client Love</div>
+        <h2 class="heading-xl">Hear it from the people we work with</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testi-card fade-up delay-1">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <!-- REPLACE: with real client testimonial -->
+          <p class="testi-quote">
+            "I finally feel proud of my Instagram. Before, I was posting just to post and feeling like I was screaming into the void. Now my content actually looks like my brand and I have new inquiries coming in from it."
+          </p>
+          <div class="testi-author">
+            <!-- REPLACE: bg color and initials with actual client photo -->
+            <div class="author-avatar" style="background:#9C8F84">S.L.</div>
+            <div>
+              <div class="author-name">Sarah L.</div>
+              <div class="author-role">Hair Stylist, Scottsdale AZ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card featured fade-up delay-2">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <!-- REPLACE: with real client testimonial -->
+          <p class="testi-quote">
+            "Courtney genuinely gets it. She took the time to understand my practice and my clients before writing a single word. My content sounds like me. That is the whole thing I was looking for."
+          </p>
+          <div class="testi-author">
+            <!-- REPLACE: with actual client photo -->
+            <div class="author-avatar" style="background:#ADBAB7">M.R.</div>
+            <div>
+              <div class="author-name">Michelle R.</div>
+              <div class="author-role">Therapist, Phoenix AZ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up delay-3">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <!-- REPLACE: with real client testimonial -->
+          <p class="testi-quote">
+            "Working with a boutique agency made all the difference. I was not lost in a pile of 50 other clients. My account actually got real attention and it showed in the numbers."
+          </p>
+          <div class="testi-author">
+            <!-- REPLACE: with actual client photo -->
+            <div class="author-avatar" style="background:#C7C1B8; color: #2F2F2F">J.T.</div>
+            <div>
+              <div class="author-name">Jamie T.</div>
+              <div class="author-role">Realtor, Scottsdale AZ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATES TEASER SECTION
+  ================================================================ -->
+  <section id="templates" class="section">
+    <div class="container">
+      <div class="templates-inner">
+        <div class="fade-up">
+          <div class="coming-soon-badge">
+            <span class="dot"></span>
+            Launching Soon
+          </div>
+          <h2 class="heading-xl" style="margin-bottom:14px">
+            Done-for-you<br />
+            <em>Instagram templates</em>
+          </h2>
+          <p>
+            Not every brand is ready for full management and that is completely okay. Soon we will be opening a template shop built specifically for beauty and aesthetic brands who want their Instagram to look polished without starting from scratch.
+          </p>
+          <div class="template-types">
+            <span class="template-tag">🌿 Medspa &amp; Injectors</span>
+            <span class="template-tag">✂️ Salons &amp; Stylists</span>
+            <span class="template-tag">💆 Wellness Brands</span>
+            <span class="template-tag">📸 Story Templates</span>
+            <span class="template-tag">📝 Caption Packs</span>
+            <span class="template-tag">🎠 Carousel Templates</span>
+          </div>
+          <!-- REPLACE: Link to your actual shop once live -->
+          <a href="#templates-notify" class="btn btn-outline">
+            Get early access
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
+        </div>
+
+        <div class="fade-up delay-2">
+          <div id="templates-notify" class="email-capture-card">
+            <h4>Be the first to know</h4>
+            <p>Drop your email and we will let you know the moment the template shop is open, plus you will get first access and a little something extra.</p>
+            <!-- REPLACE: Connect this form to your email platform (Flodesk, Mailchimp, ConvertKit, etc.) -->
+            <form class="email-form" onsubmit="handleTemplateSignup(event)">
+              <input type="text" name="name" placeholder="Your first name" required />
+              <input type="email" name="email" placeholder="Your email address" required />
+              <input type="text" name="business" placeholder="What kind of business? (optional)" />
+              <button type="submit">Notify Me When It Launches</button>
+            </form>
+            <p class="email-note">No spam, ever. Just a heads-up when the shop opens.</p>
+          </div>
+
+          <!-- Template preview thumbnails — REPLACE with actual template screenshots -->
+          <div class="template-preview-row">
+            <div class="template-preview-thumb" style="background:#EDE9E3;">
+              🌸
+              <div class="thumb-label">Story</div>
+            </div>
+            <div class="template-preview-thumb" style="background:#E8EEEC;">
+              ✦
+              <div class="thumb-label">Carousel</div>
+            </div>
+            <div class="template-preview-thumb" style="background:#F0EDE8;">
+              💌
+              <div class="thumb-label">Caption</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FINAL CTA SECTION
+  ================================================================ -->
+  <section id="cta-final" class="section">
+    <div class="container">
+      <div class="cta-content fade-up">
+        <div class="pill-label pill-label-dark" style="margin-bottom:26px; display:inline-flex">
+          Ready When You Are
+        </div>
+        <h2 class="cta-headline">
+          Your audience is waiting.<br />
+          Let's give them something<br />
+          to <em>fall in love with.</em>
+        </h2>
+        <p class="cta-sub">
+          Book a free 30-minute discovery call. We will talk about your brand, your goals,
+          and whether we are a good fit. No contracts to sign, no pressure to decide on the call.
+        </p>
+        <div class="cta-actions">
+          <!-- REPLACE: href with your Calendly link or booking page URL -->
+          <a href="#" class="btn btn-sage btn-lg">
+            Book My Free Call
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
+          <!-- REPLACE: href with your actual Instagram URL -->
+          <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="btn btn-outline-ivory">
+            See my work on Instagram
+          </a>
+        </div>
+        <p class="cta-micro">Free 30-minute call. No commitment. Based in Scottsdale, AZ and serving brands nationwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+  ================================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <!-- REPLACE: with your actual WL monogram image if desired -->
+        <div class="footer-logo-text">WITH LOVE SOCIALS</div>
+        <div class="footer-tagline">Made with love. Posted with purpose.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#story">About</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <!-- REPLACE: Add links to your Privacy Policy and Terms pages once you have them -->
+        <li><a href="#">Privacy</a></li>
+      </ul>
+      <div class="footer-social">
+        <!-- REPLACE: href with your actual Instagram URL -->
+        <span>Find me on Instagram:</span>
+        <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener">@withlove_socials</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       JAVASCRIPT
+  ================================================================ -->
+  <script>
+    /* ---- Sticky nav ---- */
+    const navbar    = document.getElementById('navbar');
+    const heroEl    = document.getElementById('hero');
+    const stickyBar = document.getElementById('mobile-sticky-bar');
+
+    function onScroll() {
+      const scrolled = window.scrollY > 55;
+      navbar.classList.toggle('scrolled', scrolled);
+
+      // Show sticky bottom bar only after scrolling past the hero
+      if (heroEl) {
+        const heroBtm = heroEl.getBoundingClientRect().bottom;
+        stickyBar && stickyBar.classList.toggle('visible', heroBtm < 0);
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ---- Fade-up animations ---- */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ---- Smooth scroll for all anchor links ---- */
+    function smoothTo(href) {
+      const target = document.querySelector(href);
+      if (target) {
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 78, behavior: 'smooth' });
+      }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && href.length > 1) {
+          e.preventDefault();
+          closeMobileNav();
+          smoothTo(href);
+        }
+      });
+    });
+
+    /* ---- Mobile hamburger menu ---- */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    function closeMobileNav() {
+      hamburger && hamburger.classList.remove('open');
+      mobileNav && mobileNav.classList.remove('open');
+      hamburger && hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger && hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMobileNav();
+    });
+
+    /* ---- Template signup form handler ----
+       REPLACE: Connect to your actual email platform (Flodesk, Mailchimp, etc.)
+       Most platforms give you a form embed code to drop in directly. */
+    function handleTemplateSignup(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'You are on the list!';
+      btn.style.background = '#ADBAB7';
+      btn.style.color = '#2F2F2F';
+      btn.disabled = true;
+      // TODO: swap in your actual submission endpoint
+      // fetch('/api/subscribe', { method: 'POST', body: new FormData(e.target) })
+    }
+  </script>
 
 </body>
 </html>
