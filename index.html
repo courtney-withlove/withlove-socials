@@ -16,6 +16,7 @@
   --mocha:#9C8F84;
   --charcoal:#2F2F2F;
   --sage:#ADBAB7;
+  --radius-lg:22px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -26,11 +27,12 @@ body{
   color:var(--charcoal);
 }
 
+/* FIXED IMAGE HANDLING */
 img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
   display:block;
+  width:auto;
+  height:100%;
+  object-fit:contain;
 }
 
 .container{
@@ -60,9 +62,11 @@ img{
   padding:0 28px;
 }
 
-.nav-logo img{
+/* ✅ FIXED LOGO */
+.nav-logo-img{
   height:36px;
   width:auto;
+  object-fit:contain;
 }
 
 .nav-links{
@@ -93,22 +97,15 @@ img{
   overflow:hidden;
 }
 
-/* texture */
-#hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("https://www.transparenttextures.com/patterns/canvas.png");
-  opacity:0.12;
-}
-
-/* lighting */
-.hero-glow{
+/* ✅ TEXTURE + LIGHTING */
+.hero-bg{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(circle at 20% 40%, rgba(173,186,183,0.15), transparent 60%),
-    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.06), transparent 60%);
+    radial-gradient(ellipse 70% 55% at 75% 30%, rgba(173,186,183,0.10), transparent 60%),
+    radial-gradient(ellipse 50% 70% at 10% 90%, rgba(156,143,132,0.08), transparent 55%),
+    url("https://www.transparenttextures.com/patterns/canvas.png");
+  opacity:0.25;
 }
 
 .hero-inner{
@@ -116,6 +113,7 @@ img{
   padding-bottom:80px;
 }
 
+/* ✅ FIXED HERO SPACING */
 .hero-content{
   max-width:640px;
   margin-left:clamp(24px,6vw,100px);
@@ -132,8 +130,8 @@ img{
 }
 
 .hero-headline em{
-  font-style:italic;
   color:var(--sage);
+  font-style:italic;
 }
 
 .hero-sub{
@@ -183,10 +181,11 @@ img{
   gap:60px;
 }
 
+/* ✅ FIXED FOUNDER IMAGE */
 .founder-photo{
   width:100%;
   aspect-ratio:3/4;
-  border-radius:20px;
+  border-radius:var(--radius-lg);
   background-image:url("Founder Image.png");
   background-size:cover;
   background-position:center;
@@ -211,8 +210,11 @@ img{
   background:var(--charcoal);
   color:white;
   text-align:center;
+  position:relative;
+  overflow:hidden;
 }
 
+/* texture on CTA */
 #cta::after{
   content:"";
   position:absolute;
@@ -226,7 +228,7 @@ img{
   z-index:2;
 }
 
-.cta h2{
+.cta-inner h2{
   font-family:'PT Serif';
   font-size:42px;
   margin-bottom:20px;
@@ -256,7 +258,10 @@ footer{
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a class="nav-logo"><img src="NavIcon.svg"></a>
+    <a href="#hero">
+      <img src="NavIcon.svg" alt="Logo" class="nav-logo-img">
+    </a>
+
     <ul class="nav-links">
       <li><a href="#">Services</a></li>
       <li><a href="#">About</a></li>
@@ -269,7 +274,8 @@ footer{
 
 <!-- HERO -->
 <section id="hero">
-<div class="hero-glow"></div>
+<div class="hero-bg"></div>
+
 <div class="container hero-inner">
 <div class="hero-content">
 
@@ -296,35 +302,28 @@ We manage your Instagram so your content converts into bookings.
 <section class="section container">
 <h2>Services</h2>
 <div class="services-grid">
-
 <div class="card">Content Creation</div>
 <div class="card">Instagram Management</div>
 <div class="card">Strategy & Audit</div>
-
 </div>
 </section>
 
 <!-- ABOUT -->
 <section class="section container grid">
-
 <div class="founder-photo"></div>
-
 <div>
 <h2>Hi, I'm Courtney.</h2>
 <p>I help brands turn Instagram into a client machine.</p>
 </div>
-
 </section>
 
 <!-- RESULTS -->
 <section class="section container">
 <h2>Results</h2>
 <div class="results">
-
 <div class="result-card">More DMs</div>
 <div class="result-card">Better Content</div>
 <div class="result-card">More Time Back</div>
-
 </div>
 </section>
 
