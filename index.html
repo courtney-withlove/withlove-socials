@@ -7,6 +7,50 @@
   <link rel="icon" type="image/png" href="favicon.png.png" />
 
   <!-- =====================================================
+       GOOGLE ANALYTICS 4
+       REPLACE G-XXXXXXXXXX with your actual GA4 Measurement ID
+       Find it in: GA4 → Admin → Data Streams → your stream → Measurement ID
+  ====================================================== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+
+    /* ── Conversion events ── */
+    /* CTA clicks → fires whenever any booking button is clicked */
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('a[href="#cta-final"], .sticky-bar-btn, .mobile-cta-btn').forEach(function(el) {
+        el.addEventListener('click', function() {
+          gtag('event', 'cta_click', {
+            event_category: 'engagement',
+            event_label: el.innerText.trim()
+          });
+        });
+      });
+      /* Email capture → fires on template waitlist form submit */
+      var emailForm = document.querySelector('#templates form, .templates-form');
+      if (emailForm) {
+        emailForm.addEventListener('submit', function() {
+          gtag('event', 'email_signup', { event_category: 'lead' });
+        });
+      }
+      /* Scroll depth → fires at 50% and 90% page scroll */
+      var fired = { 50: false, 90: false };
+      window.addEventListener('scroll', function() {
+        var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        [50, 90].forEach(function(d) {
+          if (pct >= d && !fired[d]) {
+            fired[d] = true;
+            gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: d + '%' });
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- =====================================================
        AEO / STRUCTURED DATA — Answer Engine Optimization
        Helps ChatGPT, Perplexity, Google AI Overviews, and
        voice search understand and cite With Love Socials.
@@ -657,6 +701,51 @@
       margin-bottom: 40px;
     }
     .hero-sub strong { color: rgba(246,244,241,0.88); font-weight: 500; }
+    .hero-pricing-anchor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      padding: 12px 18px;
+      background: rgba(246,244,241,0.05);
+      border: 1px solid rgba(173,186,183,0.18);
+      border-radius: var(--radius-md);
+      width: fit-content;
+    }
+    .pricing-anchor-label {
+      font-size: 0.8rem;
+      color: rgba(246,244,241,0.45);
+      font-family: var(--font-sans);
+      letter-spacing: 0.03em;
+    }
+    .pricing-anchor-price {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1;
+    }
+    .pricing-anchor-mo {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(246,244,241,0.5);
+      margin-left: 1px;
+    }
+    .pricing-anchor-divider {
+      color: rgba(246,244,241,0.2);
+      font-size: 1rem;
+    }
+    .pricing-anchor-link {
+      font-size: 0.82rem;
+      color: var(--sage);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .pricing-anchor-link:hover { color: #C8D5D3; }
 
     .hero-actions {
       display: flex;
@@ -724,7 +813,10 @@
        SERVICES SECTION
     ============================================================ */
     #services {
-      background: var(--ivory);
+      background:
+        radial-gradient(circle, rgba(47,47,47,0.055) 1px, transparent 1px),
+        var(--ivory);
+      background-size: 28px 28px, auto;
     }
     .section-header {
       max-width: 580px;
@@ -838,7 +930,10 @@
        RESULTS SECTION
     ============================================================ */
     #results {
-      background: var(--ivory);
+      background:
+        radial-gradient(circle, rgba(47,47,47,0.055) 1px, transparent 1px),
+        var(--ivory);
+      background-size: 28px 28px, auto;
     }
     .results-intro {
       display: grid;
@@ -943,7 +1038,15 @@
        PROCESS SECTION
     ============================================================ */
     #process {
-      background: var(--ivory-dark);
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 14px,
+          rgba(47,47,47,0.028) 14px,
+          rgba(47,47,47,0.028) 15px
+        ),
+        var(--ivory-dark);
       border-top: 1px solid var(--taupe);
       border-bottom: 1px solid var(--taupe);
     }
@@ -1004,7 +1107,10 @@
        TESTIMONIALS SECTION
     ============================================================ */
     #testimonials {
-      background: var(--ivory);
+      background:
+        radial-gradient(circle, rgba(47,47,47,0.055) 1px, transparent 1px),
+        var(--ivory);
+      background-size: 28px 28px, auto;
     }
     .testimonials-grid {
       display: grid;
@@ -1067,7 +1173,10 @@
        TEMPLATES TEASER SECTION
     ============================================================ */
     #templates {
-      background: var(--sage-light);
+      background:
+        radial-gradient(circle, rgba(113,143,138,0.18) 1px, transparent 1px),
+        var(--sage-light);
+      background-size: 22px 22px, auto;
       border-top: 1px solid rgba(173,186,183,0.3);
       border-bottom: 1px solid rgba(173,186,183,0.3);
     }
@@ -1219,7 +1328,10 @@
        FINAL CTA SECTION
     ============================================================ */
     #cta-final {
-      background: var(--charcoal);
+      background:
+        radial-gradient(circle, rgba(246,244,241,0.045) 1px, transparent 1px),
+        var(--charcoal);
+      background-size: 28px 28px, auto;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -1320,6 +1432,136 @@
       transition: color 0.2s;
     }
     .footer-social a:hover { color: #C8D5D3; }
+
+    /* ============================================================
+       INSTAGRAM FEED SECTION
+    ============================================================ */
+    .ig-feed-section {
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 14px,
+          rgba(47,47,47,0.028) 14px,
+          rgba(47,47,47,0.028) 15px
+        ),
+        var(--ivory-dark);
+    }
+    .ig-feed-section .section-sub {
+      font-size: 1rem;
+      color: var(--charcoal-80);
+      max-width: 520px;
+      margin: 12px auto 48px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .ig-behold-wrap {
+      margin-bottom: 36px;
+    }
+    /* Carousel container */
+    .ig-carousel-wrap { position: relative; }
+    .ig-carousel {
+      display: grid;
+      grid-template-columns: repeat(6, 240px);
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+      transition: transform 0.4s ease;
+    }
+    .ig-carousel::-webkit-scrollbar { display: none; }
+    .ig-card {
+      scroll-snap-align: start;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+      aspect-ratio: 1 / 1;
+      background: var(--taupe);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .ig-card:hover { transform: scale(1.025); box-shadow: 0 8px 32px rgba(47,47,47,0.12); }
+    .ig-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder state */
+    .ig-card--placeholder .ig-card-img {
+      background: var(--ivory);
+      border: 1px solid var(--taupe);
+    }
+    .ig-placeholder-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--mocha);
+    }
+    .ig-placeholder-inner svg { width: 32px; height: 32px; opacity: 0.5; }
+    .ig-placeholder-inner span { font-size: 0.72rem; font-family: var(--font-sans); opacity: 0.6; }
+    /* Carousel controls */
+    .ig-carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .ig-prev, .ig-next {
+      background: none;
+      border: 1px solid var(--taupe);
+      color: var(--charcoal);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ig-prev:hover, .ig-next:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-color: var(--charcoal);
+    }
+    .ig-dots { display: flex; gap: 6px; }
+    .ig-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--taupe);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .ig-dot.active { background: var(--charcoal); transform: scale(1.3); }
+    /* Follow CTA */
+    .ig-follow-cta { text-align: center; margin-top: 40px; }
+    .btn-outline-mocha {
+      border: 1.5px solid var(--mocha);
+      color: var(--mocha);
+      background: transparent;
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-mocha:hover { background: var(--mocha); color: var(--ivory); }
 
     /* ============================================================
        RESPONSIVE
@@ -1580,7 +1822,10 @@
        ABOUT / FOUNDER SECTION REDESIGN
     ============================================================ */
     #story {
-      background: var(--charcoal);
+      background:
+        radial-gradient(circle, rgba(246,244,241,0.045) 1px, transparent 1px),
+        var(--charcoal);
+      background-size: 28px 28px, auto;
       position: relative;
       overflow: hidden;
     }
@@ -1793,6 +2038,12 @@
           like you, grows the right audience, and actually books clients.
           Based in Scottsdale, AZ and working with founders nationwide.
         </p>
+        <div class="hero-pricing-anchor">
+          <span class="pricing-anchor-label">Packages starting at</span>
+          <span class="pricing-anchor-price">$1,250<span class="pricing-anchor-mo">/mo</span></span>
+          <span class="pricing-anchor-divider">·</span>
+          <a href="#cta-final" class="pricing-anchor-link">See what's included →</a>
+        </div>
         <div class="hero-actions">
           <!-- REPLACE: href with your Calendly or booking link -->
           <a href="#cta-final" class="btn btn-sage btn-lg">
@@ -2198,6 +2449,90 @@
   </section>
 
   <!-- ================================================================
+       INSTAGRAM LIVE FEED SECTION
+       HOW TO CONNECT YOUR LIVE FEED:
+       1. Go to behold.io and create a free account
+       2. Connect your @withlove_socials Instagram
+       3. Create a new feed → copy the Feed ID (looks like: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+       4. Replace BEHOLD_FEED_ID below with your actual Feed ID
+       The Behold widget handles live post fetching, token refresh, and rendering.
+  ================================================================ -->
+  <section id="instagram-feed" class="section ig-feed-section">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <div class="pill-label pill-label-mocha">Follow Along</div>
+        <h2 class="heading-xl">See what we've been <em>creating</em></h2>
+        <p class="section-sub">Real work, real clients, real results. Follow us on Instagram for strategy tips, behind-the-scenes, and the content we're proud of.</p>
+      </div>
+
+      <!-- OPTION A: Behold.io embed (recommended — free, live, auto-refreshes) -->
+      <!-- REPLACE YOUR_BEHOLD_FEED_ID with your actual Feed ID from behold.io -->
+      <div class="ig-behold-wrap fade-up">
+        <div id="behold-feed">
+          <script>
+            (function(){
+              var feedId = 'YOUR_BEHOLD_FEED_ID'; /* ← REPLACE THIS */
+              if (feedId === 'YOUR_BEHOLD_FEED_ID') {
+                document.getElementById('behold-feed').innerHTML = document.getElementById('ig-placeholder-tpl').innerHTML;
+                return;
+              }
+              var s = document.createElement('script');
+              s.src = 'https://w.behold.so/widget.js';
+              s.setAttribute('data-behold-id', feedId);
+              document.getElementById('behold-feed').appendChild(s);
+            })();
+          </script>
+        </div>
+      </div>
+
+      <!-- OPTION B: Branded placeholder carousel (shows until Behold is connected) -->
+      <template id="ig-placeholder-tpl">
+        <div class="ig-carousel-wrap">
+          <div class="ig-carousel" id="ig-carousel">
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="ig-card ig-card--placeholder">
+              <div class="ig-card-img">
+                <div class="ig-placeholder-inner">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                  <span>@withlove_socials</span>
+                </div>
+              </div>
+            </a>
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="ig-card ig-card--placeholder">
+              <div class="ig-card-img"><div class="ig-placeholder-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@withlove_socials</span></div></div>
+            </a>
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="ig-card ig-card--placeholder">
+              <div class="ig-card-img"><div class="ig-placeholder-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@withlove_socials</span></div></div>
+            </a>
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="ig-card ig-card--placeholder">
+              <div class="ig-card-img"><div class="ig-placeholder-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@withlove_socials</span></div></div>
+            </a>
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="ig-card ig-card--placeholder">
+              <div class="ig-card-img"><div class="ig-placeholder-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@withlove_socials</span></div></div>
+            </a>
+            <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="ig-card ig-card--placeholder">
+              <div class="ig-card-img"><div class="ig-placeholder-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@withlove_socials</span></div></div>
+            </a>
+          </div>
+
+          <!-- Carousel controls -->
+          <div class="ig-carousel-controls">
+            <button class="ig-prev" id="ig-prev" aria-label="Previous posts">←</button>
+            <div class="ig-dots" id="ig-dots"></div>
+            <button class="ig-next" id="ig-next" aria-label="Next posts">→</button>
+          </div>
+        </div>
+      </template>
+
+      <div class="ig-follow-cta fade-up">
+        <a href="https://instagram.com/withlove_socials" target="_blank" rel="noopener" class="btn btn-outline-mocha">
+          Follow @withlove_socials
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
        TEMPLATES TEASER SECTION
   ================================================================ -->
   <section id="templates" class="section">
@@ -2391,6 +2726,56 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeMobileNav();
     });
+
+    /* ---- Instagram carousel (placeholder mode) ---- */
+    (function initIgCarousel() {
+      const carousel   = document.getElementById('ig-carousel');
+      const prevBtn    = document.getElementById('ig-prev');
+      const nextBtn    = document.getElementById('ig-next');
+      const dotsWrap   = document.getElementById('ig-dots');
+      if (!carousel || !prevBtn) return;
+
+      const cards      = carousel.querySelectorAll('.ig-card');
+      const cardW      = () => cards[0] ? cards[0].offsetWidth + 14 : 254; /* card + gap */
+      const visible    = () => Math.floor(carousel.offsetWidth / cardW()) || 1;
+      const totalSteps = () => Math.max(0, cards.length - visible());
+      let   step       = 0;
+
+      /* Build dots */
+      function buildDots() {
+        if (!dotsWrap) return;
+        dotsWrap.innerHTML = '';
+        const n = totalSteps() + 1;
+        for (let i = 0; i < n; i++) {
+          const d = document.createElement('button');
+          d.className = 'ig-dot' + (i === step ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          d.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(d);
+        }
+      }
+
+      function goTo(n) {
+        step = Math.min(Math.max(n, 0), totalSteps());
+        carousel.scrollTo({ left: step * cardW(), behavior: 'smooth' });
+        dotsWrap && dotsWrap.querySelectorAll('.ig-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === step);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => goTo(step - 1));
+      nextBtn.addEventListener('click', () => goTo(step + 1));
+
+      /* Auto-advance every 4 s */
+      let timer = setInterval(() => goTo(step >= totalSteps() ? 0 : step + 1), 4000);
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', () => {
+        timer = setInterval(() => goTo(step >= totalSteps() ? 0 : step + 1), 4000);
+      });
+
+      buildDots();
+      window.addEventListener('resize', buildDots);
+    })();
 
     /* ---- Template signup form handler ----
        REPLACE: Connect to your actual email platform (Flodesk, Mailchimp, etc.)
